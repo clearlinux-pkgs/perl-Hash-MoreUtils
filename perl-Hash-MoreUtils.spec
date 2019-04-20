@@ -4,13 +4,14 @@
 #
 Name     : perl-Hash-MoreUtils
 Version  : 0.06
-Release  : 9
+Release  : 10
 URL      : https://cpan.metacpan.org/authors/id/R/RE/REHSACK/Hash-MoreUtils-0.06.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RE/REHSACK/Hash-MoreUtils-0.06.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libh/libhash-moreutils-perl/libhash-moreutils-perl_0.05-2.debian.tar.xz
-Summary  : 'Provide the stuff missing in Hash::Util'
+Summary  : Provide the stuff missing in Hash::Util
 Group    : Development/Tools
-License  : Artistic-1.0-Perl
+License  : Artistic-1.0-Perl GPL-2.0
+Requires: perl-Hash-MoreUtils-license = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -30,9 +31,18 @@ my %r = safe_reverse \%h; # (bar => "foo", BAR => "FOO", 0 => "false", 1 => "tru
 Summary: dev components for the perl-Hash-MoreUtils package.
 Group: Development
 Provides: perl-Hash-MoreUtils-devel = %{version}-%{release}
+Requires: perl-Hash-MoreUtils = %{version}-%{release}
 
 %description dev
 dev components for the perl-Hash-MoreUtils package.
+
+
+%package license
+Summary: license components for the perl-Hash-MoreUtils package.
+Group: Default
+
+%description license
+license components for the perl-Hash-MoreUtils package.
 
 
 %prep
@@ -40,7 +50,7 @@ dev components for the perl-Hash-MoreUtils package.
 cd ..
 %setup -q -T -D -n Hash-MoreUtils-0.06 -b 1
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Hash-MoreUtils-0.06/deblicense/
+cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Hash-MoreUtils-0.06/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -64,6 +74,8 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-Hash-MoreUtils
+cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Hash-MoreUtils/deblicense_copyright
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -81,3 +93,7 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 %files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/Hash::MoreUtils.3
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-Hash-MoreUtils/deblicense_copyright
