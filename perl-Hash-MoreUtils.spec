@@ -4,7 +4,7 @@
 #
 Name     : perl-Hash-MoreUtils
 Version  : 0.06
-Release  : 14
+Release  : 15
 URL      : https://cpan.metacpan.org/authors/id/R/RE/REHSACK/Hash-MoreUtils-0.06.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RE/REHSACK/Hash-MoreUtils-0.06.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libh/libhash-moreutils-perl/libhash-moreutils-perl_0.05-2.debian.tar.xz
@@ -110,4 +110,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.2/Hash/MoreUtils.pm
+/usr/lib/perl5/vendor_perl/5.30.3/Hash/MoreUtils.pm
