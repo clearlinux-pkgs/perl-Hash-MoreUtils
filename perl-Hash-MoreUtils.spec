@@ -4,7 +4,7 @@
 #
 Name     : perl-Hash-MoreUtils
 Version  : 0.06
-Release  : 26
+Release  : 27
 URL      : https://cpan.metacpan.org/authors/id/R/RE/REHSACK/Hash-MoreUtils-0.06.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RE/REHSACK/Hash-MoreUtils-0.06.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libh/libhash-moreutils-perl/libhash-moreutils-perl_0.05-2.debian.tar.xz
